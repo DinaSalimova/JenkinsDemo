@@ -52,7 +52,7 @@ pipeline {
         stage('Install PostgreSQL to TEST') {
             steps {
                 sh """
-                helm upgrade --install postgres https://raw.githubusercontent.com/hansehe/postgres-helm/master/helm/charts/postgres \\
+                helm upgrade --install postgres https://raw.githubusercontent.com/bitnami/charts/refs/heads/archive-full-index/bitnami/ \\
                   --namespace test --create-namespace \\
                   --set auth.database=${DB_NAME} \\
                   --set auth.username=${DB_USER} \\
@@ -108,7 +108,7 @@ pipeline {
         stage('Install PostgreSQL to PROD') {
             steps {
                 sh """
-                helm upgrade --install postgres https://raw.githubusercontent.com/hansehe/postgres-helm/master/helm/charts/postgres \\
+                helm upgrade --install postgres https://raw.githubusercontent.com/bitnami/charts/refs/heads/archive-full-index/bitnami/ \\
                   --namespace prod --create-namespace \\
                   --set auth.database=${DB_NAME} \\
                   --set auth.username=${DB_USER} \\
